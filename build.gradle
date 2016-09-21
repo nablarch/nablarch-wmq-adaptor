@@ -1,0 +1,113 @@
+// -*- mode: groovy; coding: utf-8-unix -*-
+
+
+group = 'com.nablarch.integration'
+version = '1.0.1'
+description = 'WebSphere MQ用のメッセージング基盤機能の拡張実装'
+
+repositories {
+  mavenLocal()
+  maven { url "${developLibUrl}" }
+  jcenter()
+  
+  // サードパーティ製ライブラリの格納リポジトリ
+  if(project.hasProperty('nablarchExtRepoUrl')) {
+     maven { url "${nablarchExtRepoUrl}" }
+   }
+
+}
+
+buildscript {
+  repositories {
+    mavenLocal()
+    maven { url "${developLibUrl}" }
+    jcenter()
+    
+    // サードパーティ製ライブラリの格納リポジトリ
+    if(project.hasProperty('nablarchExtRepoUrl')) {
+       maven { url "${nablarchExtRepoUrl}" }
+     }
+    
+  }
+  dependencies {
+    classpath "com.nablarch.dev:nablarch-gradle-plugin:${nablarchGradlePluginVersion}"
+    classpath "net.saliman:gradle-cobertura-plugin:2.2.3"
+    classpath "io.spring.gradle:dependency-management-plugin:0.5.3.RELEASE"
+  }
+}
+apply {
+  plugin 'com.nablarch.dev.nablarch-build'
+  plugin 'com.nablarch.dev.nablarch-sonarqube'
+  plugin 'com.nablarch.dev.nablarch-maven-deploy'
+  
+  //TODO 一旦社内に向ける。GitHub公開後に向き先変更。
+  from 'http://nablarch.intra.tis.co.jp/gitbucket/nablarch-develop/nablarch-gradle-plugin/blob/develop/scripts/cobertura/cobertura-0.0.1.gradle?raw=true'
+}
+apply plugin: "io.spring.dependency-management"
+
+dependencyManagement {
+  imports {
+    mavenBom 'com.nablarch.profile:nablarch-bom:5u6'
+  }
+  applyMavenExclusions false
+}
+
+sourceSets {
+  main {
+    java {
+      srcDir "${projectDir}/main/java"
+    }
+  }
+  test {
+    java {
+      srcDir "${projectDir}/test/java"
+    }
+    resources {
+      srcDir "${projectDir}/test/resources"
+    }
+  }
+}
+
+dependencies {
+
+  compile(
+    'com.nablarch.framework:nablarch-fw-web-extension',
+    'com.nablarch.framework:nablarch-fw-messaging-mom',
+    'com.nablarch.framework:nablarch-core-jdbc',
+
+    'com.ibm:com.ibm.mq:7.5',
+    'com.ibm:com.ibm.mq.commonservices:7.5',
+    'com.ibm:com.ibm.mq.headers:7.5',
+    'com.ibm:com.ibm.mq.jmqi:7.5',
+    'com.ibm:com.ibm.mq.pcf:7.5',
+  )
+  
+  // JDBC Drivers
+  testCompile (group: 'com.oracle', name: 'ojdbc6', version: '11.2.0.4.0')
+  testCompile (group: 'com.ibm', name: 'db2jcc', version: '9.7.200.358')
+  testCompile (group: 'com.ibm', name: 'db2jcc4', version: '9.7.200.358')
+  testCompile (group: 'com.ibm', name: 'db2jcc_license_cu', version: '9.7.200.358')
+  
+  // connector
+  testRuntime 'javax.resource:connector:1.0'
+  
+  // Hereis and nablarch-testing
+  testCompile 'com.nablarch.tool:nablarch-toolbox:1.0.2'
+  testCompile 'com.nablarch.dev:nablarch-test-support-hereis:1.0.0'
+}
+
+
+test {
+  ignoreFailures = true
+  
+  // find component definition
+  classpath += files("${projectDir}/test/java")
+  
+  // need WebSphereMQ.
+  exclude '**/UsageOfWebSphereMQTestForDb2.class', '**/UsageOfWebSphereMQTestForOracle.class'
+}
+
+
+wrapper {
+  gradleVersion = '2.4'
+}

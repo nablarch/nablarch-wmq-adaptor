@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="Nablarch_wmq_test/lib/nablarch-tool.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/Nablarch_wmq_test/nablarch-tool.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <file path="/Nablarch_tool/nablarch-jar.jardesc"/>
+        <file path="/Nablarch_tool/.djunitplugin"/>
+        <file path="/Nablarch_tool/build.properties"/>
+        <file path="/Nablarch_tool/build.xml"/>
+        <javaElement handleIdentifier="=Nablarch_tool/resources"/>
+        <file path="/Nablarch_tool/nablarch-tfw-jar.jardesc"/>
+        <file path="/Nablarch_tool/jcoverage.ser"/>
+        <javaElement handleIdentifier="=Nablarch_tool/java"/>
+        <file path="/Nablarch_tool/.project"/>
+        <file path="/Nablarch_tool/ssd_findbugs_exclude.xml"/>
+        <file path="/Nablarch_tool/ssd_checks_suppressions.xml"/>
+        <file path="/Nablarch_tool/ssd_checks.xml"/>
+        <file path="/Nablarch_tool/.classpath"/>
+        <file path="/Nablarch_tool/nablarch-toolbox-jar.jardesc"/>
+        <file path="/Nablarch_tool/.checkstyle"/>
+    </selectedElements>
+</jardesc>
