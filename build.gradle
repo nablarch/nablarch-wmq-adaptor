@@ -40,8 +40,7 @@ apply {
   plugin 'com.nablarch.dev.nablarch-sonarqube'
   plugin 'com.nablarch.dev.nablarch-maven-deploy'
   
-  //TODO 一旦社内に向ける。GitHub公開後に向き先変更。
-  from 'http://nablarch.intra.tis.co.jp/gitbucket/nablarch-develop/nablarch-gradle-plugin/blob/develop/scripts/cobertura/cobertura-0.0.1.gradle?raw=true'
+  from 'https://github.com/nablarch/nablarch-gradle-plugin/blob/develop/scripts/cobertura/cobertura-0.0.1.gradle?raw=true'
 }
 apply plugin: "io.spring.dependency-management"
 
