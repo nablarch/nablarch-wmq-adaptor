@@ -32,23 +32,15 @@ buildscript {
   dependencies {
     classpath "com.nablarch.dev:nablarch-gradle-plugin:${nablarchGradlePluginVersion}"
     classpath "net.saliman:gradle-cobertura-plugin:2.2.3"
-    classpath "io.spring.gradle:dependency-management-plugin:0.5.3.RELEASE"
   }
 }
 apply {
   plugin 'com.nablarch.dev.nablarch-build'
   plugin 'com.nablarch.dev.nablarch-sonarqube'
   plugin 'com.nablarch.dev.nablarch-maven-deploy'
+  plugin 'com.nablarch.dev.nablarch-version'
   
   from 'https://github.com/nablarch/nablarch-gradle-plugin/blob/develop/scripts/cobertura/cobertura-0.0.1.gradle?raw=true'
-}
-apply plugin: "io.spring.dependency-management"
-
-dependencyManagement {
-  imports {
-    mavenBom 'com.nablarch.profile:nablarch-bom:5u7'
-  }
-  applyMavenExclusions false
 }
 
 sourceSets {
@@ -70,9 +62,9 @@ sourceSets {
 dependencies {
 
   compile(
-    'com.nablarch.framework:nablarch-fw-web-extension',
-    'com.nablarch.framework:nablarch-fw-messaging-mom',
-    'com.nablarch.framework:nablarch-core-jdbc',
+    "com.nablarch.framework:nablarch-fw-web-extension:${nablarchFwWebExtensionVersion}",
+    "com.nablarch.framework:nablarch-fw-messaging-mom:${nablarchFwMessagingMomVersion}",
+    "com.nablarch.framework:nablarch-core-jdbc:${nablarchCoreJdbcVersion}",
 
     'com.ibm:com.ibm.mq:7.5',
     'com.ibm:com.ibm.mq.commonservices:7.5',
@@ -108,5 +100,5 @@ test {
 
 
 wrapper {
-  gradleVersion = '2.4'
+  gradleVersion = '2.13'
 }
