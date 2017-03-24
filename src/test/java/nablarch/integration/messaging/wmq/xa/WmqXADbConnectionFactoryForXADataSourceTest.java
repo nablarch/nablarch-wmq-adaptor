@@ -1,15 +1,12 @@
 package nablarch.integration.messaging.wmq.xa;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 
 import javax.sql.XAConnection;
 import javax.sql.XADataSource;

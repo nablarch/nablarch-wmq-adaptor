@@ -1,11 +1,13 @@
 package nablarch.integration.messaging.wmq.provider.exception;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThat;
 
 import java.io.OutputStreamWriter;
+
+import com.ibm.mq.MQException;
+import com.ibm.mq.constants.CMQC;
 
 import nablarch.fw.messaging.MessagingException;
 import nablarch.fw.messaging.provider.exception.MomConnectionException;
@@ -13,9 +15,6 @@ import nablarch.fw.messaging.provider.exception.MomConnectionException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.ibm.mq.MQException;
-import com.ibm.mq.constants.CMQC;
 
 public class BasicWmqMessagingExceptionFactoryTest {
 

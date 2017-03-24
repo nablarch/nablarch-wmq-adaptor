@@ -1,10 +1,14 @@
 package nablarch.integration.messaging.wmq.provider;
 
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
 import java.nio.charset.Charset;
+
+import com.ibm.mq.MQException;
+import com.ibm.mq.MQMessage;
+import com.ibm.mq.constants.CMQC;
 
 import nablarch.core.util.BinaryUtil;
 import nablarch.core.util.StringUtil;
@@ -18,10 +22,6 @@ import nablarch.test.support.SystemRepositoryResource;
 
 import org.junit.Rule;
 import org.junit.Test;
-
-import com.ibm.mq.MQException;
-import com.ibm.mq.MQMessage;
-import com.ibm.mq.constants.CMQC;
 
 /**
  * {@link BasicWmqMqmdFieldsOperator}のテスト

@@ -1,6 +1,6 @@
 package nablarch.integration.messaging.wmq.provider;
 
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
@@ -12,14 +12,14 @@ import java.util.Map;
 import javax.sql.XADataSource;
 import javax.transaction.xa.XAException;
 
+import com.ibm.mq.MQException;
+import com.ibm.mq.MQQueue;
+import com.ibm.mq.MQQueueManager;
+
 import nablarch.fw.messaging.MessagingException;
 import nablarch.fw.messaging.SendingMessage;
 
 import org.junit.Test;
-
-import com.ibm.mq.MQException;
-import com.ibm.mq.MQQueue;
-import com.ibm.mq.MQQueueManager;
 
 public class WmqMessagingContextTest {
 

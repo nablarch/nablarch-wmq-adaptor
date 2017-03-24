@@ -70,7 +70,7 @@ test {
   ignoreFailures = true
   
   // need WebSphereMQ.
-  exclude '**/UsageOfWebSphereMQTestForDb2.class', '**/UsageOfWebSphereMQTestForOracle.class'
+  exclude '**/UsageOfWebSphereMQTest.class'
 }
 
 wrapper {

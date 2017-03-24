@@ -1,7 +1,6 @@
 package nablarch.integration.messaging.wmq.provider;
 
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
@@ -14,6 +13,15 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import com.ibm.mq.MQEnvironment;
+import com.ibm.mq.MQException;
+import com.ibm.mq.MQGetMessageOptions;
+import com.ibm.mq.MQMessage;
+import com.ibm.mq.MQPutMessageOptions;
+import com.ibm.mq.MQQueue;
+import com.ibm.mq.MQQueueManager;
+import com.ibm.mq.constants.CMQC;
+
 import nablarch.fw.launcher.ProcessAbnormalEnd;
 import nablarch.fw.messaging.MessagingException;
 import nablarch.fw.messaging.ReceivedMessage;
@@ -23,15 +31,6 @@ import nablarch.fw.messaging.provider.exception.BasicMessagingExceptionFactory;
 import nablarch.fw.messaging.provider.exception.MomConnectionException;
 
 import org.junit.Test;
-
-import com.ibm.mq.MQEnvironment;
-import com.ibm.mq.MQException;
-import com.ibm.mq.MQGetMessageOptions;
-import com.ibm.mq.MQMessage;
-import com.ibm.mq.MQPutMessageOptions;
-import com.ibm.mq.MQQueue;
-import com.ibm.mq.MQQueueManager;
-import com.ibm.mq.constants.CMQC;
 
 public class WmqMessagingProviderTest {
 

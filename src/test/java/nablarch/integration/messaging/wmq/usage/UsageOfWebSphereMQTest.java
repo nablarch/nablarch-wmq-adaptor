@@ -32,7 +32,7 @@ import org.junit.Test;
  * WebSphere MQの使用方法のテスト。
  * @author Kiyohito Itoh
  */
-public class UsageOfWebSphereMQTestSupport {
+public class UsageOfWebSphereMQTest {
     
     @Rule
     public final SystemRepositoryResource systemRepositoryResource = new SystemRepositoryResource("db-default.xml");
