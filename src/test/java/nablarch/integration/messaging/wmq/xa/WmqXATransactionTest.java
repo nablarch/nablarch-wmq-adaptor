@@ -10,7 +10,7 @@ import nablarch.core.db.connection.DbConnectionContext;
 import nablarch.core.transaction.Transaction;
 import nablarch.fw.messaging.MessagingContext;
 import nablarch.integration.messaging.wmq.MockWmqMessagingContextSupport;
-import nablarch.integration.messaging.wmq.OnMemoryLogWriter;
+import nablarch.test.support.log.app.OnMemoryLogWriter;
 
 import org.junit.After;
 import org.junit.Before;
@@ -49,18 +49,18 @@ public class WmqXATransactionTest {
         WmqXATransactionFactory factory = new WmqXATransactionFactory();
         Transaction transaction = factory.getTransaction("testConn");
 
-        OnMemoryLogWriter.LOGS.clear();
+        OnMemoryLogWriter.clear();
 
         transaction.begin();
-        assertThat(OnMemoryLogWriter.LOGS.get("writer.memory").get(0).trim(),
+        assertThat(OnMemoryLogWriter.getMessages("writer.memory").get(0).trim(),
                    is("SQL nablarch.integration.messaging.wmq.xa.WmqXATransaction#begin()"));
 
         transaction.commit();
-        assertThat(OnMemoryLogWriter.LOGS.get("writer.memory").get(1).trim(),
+        assertThat(OnMemoryLogWriter.getMessages("writer.memory").get(1).trim(),
                    is("SQL nablarch.integration.messaging.wmq.xa.WmqXATransaction#commit()"));
 
         transaction.rollback();
-        assertThat(OnMemoryLogWriter.LOGS.get("writer.memory").get(2).trim(),
+        assertThat(OnMemoryLogWriter.getMessages("writer.memory").get(2).trim(),
                    is("SQL nablarch.integration.messaging.wmq.xa.WmqXATransaction#rollback()"));
     }
 

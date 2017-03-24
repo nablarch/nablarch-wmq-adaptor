@@ -6,9 +6,6 @@ import static org.junit.Assert.assertThat;
 
 import java.nio.charset.Charset;
 
-import nablarch.core.repository.SystemRepository;
-import nablarch.core.repository.di.DiContainer;
-import nablarch.core.repository.di.config.xml.XmlComponentDefinitionLoader;
 import nablarch.core.util.BinaryUtil;
 import nablarch.core.util.StringUtil;
 import nablarch.fw.messaging.FwHeader;
@@ -19,10 +16,6 @@ import nablarch.fw.messaging.SendingMessage;
 import nablarch.integration.messaging.wmq.FixedSystemTimeProvider;
 import nablarch.test.support.SystemRepositoryResource;
 
-import org.hamcrest.CoreMatchers;
-
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
