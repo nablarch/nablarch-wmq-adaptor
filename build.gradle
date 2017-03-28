@@ -43,20 +43,8 @@ apply {
   from 'https://github.com/nablarch/nablarch-gradle-plugin/blob/develop/scripts/cobertura/cobertura-0.0.1.gradle?raw=true'
 }
 
-sourceSets {
-  main {
-    java {
-      srcDir "${projectDir}/main/java"
-    }
-  }
-  test {
-    java {
-      srcDir "${projectDir}/test/java"
-    }
-    resources {
-      srcDir "${projectDir}/test/resources"
-    }
-  }
+configurations {
+  all*.exclude module: 'nablarch-test-support-hereis'
 }
 
 dependencies {
@@ -73,31 +61,17 @@ dependencies {
     'com.ibm:com.ibm.mq.pcf:7.5',
   )
   
-  // JDBC Drivers
-  testCompile (group: 'com.oracle', name: 'ojdbc6', version: '11.2.0.4.0')
-  testCompile (group: 'com.ibm', name: 'db2jcc', version: '9.7.200.358')
-  testCompile (group: 'com.ibm', name: 'db2jcc4', version: '9.7.200.358')
-  testCompile (group: 'com.ibm', name: 'db2jcc_license_cu', version: '9.7.200.358')
-  
   // connector
   testRuntime 'javax.resource:connector:1.0'
-  
-  // Hereis and nablarch-testing
-  testCompile 'com.nablarch.tool:nablarch-toolbox:1.0.2'
-  testCompile 'com.nablarch.dev:nablarch-test-support-hereis:1.0.0'
 }
 
 
 test {
   ignoreFailures = true
   
-  // find component definition
-  classpath += files("${projectDir}/test/java")
-  
   // need WebSphereMQ.
-  exclude '**/UsageOfWebSphereMQTestForDb2.class', '**/UsageOfWebSphereMQTestForOracle.class'
+  exclude '**/UsageOfWebSphereMQTest.class'
 }
-
 
 wrapper {
   gradleVersion = '2.13'
