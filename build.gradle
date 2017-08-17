@@ -67,7 +67,6 @@ dependencies {
 
 
 test {
-  ignoreFailures = true
   
   // need WebSphereMQ.
   exclude '**/UsageOfWebSphereMQTest.class'
