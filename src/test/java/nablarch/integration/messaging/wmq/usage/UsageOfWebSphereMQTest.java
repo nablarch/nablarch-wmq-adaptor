@@ -46,7 +46,7 @@ public class UsageOfWebSphereMQTest {
     }
 
     @Test
-//    @Ignore
+    @Ignore
     public void single() throws Exception {
         MQQueueManager qm = null;
         Connection con = null;

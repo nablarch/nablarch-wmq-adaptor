@@ -202,11 +202,12 @@ public class WmqMessagingProviderTest {
         // 退避キューが指定されていない場合(順序保障あり)
         provider = new WmqMessagingProvider();
         try {
+            provider.setBackoutLimitExceededFailureCode("dummy");
             provider.processPoisonMessage(null, m);
             fail();
         } catch (ProcessAbnormalEnd e) {
             assertThat(e.getStatusCode(), is(190));
-            assertNull(e.getMessageId());
+            assertNotNull(e.getMessageId());
         }
         provider = new WmqMessagingProvider();
         provider.setBackoutLimitExceededExitCode(199);
