@@ -20,14 +20,19 @@ import nablarch.fw.messaging.MessagingContext;
 import nablarch.integration.messaging.wmq.MockWmqMessagingContextSupport;
 import nablarch.integration.messaging.wmq.provider.WmqMessagingContext;
 import nablarch.test.support.SystemRepositoryResource;
+import nablarch.test.support.db.helper.DatabaseTestRunner;
+import nablarch.test.support.db.helper.TargetDb;
 
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 /**
  * {@link WmqXADbConnectionFactoryForXADataSource}のテスト。
  * @author Kiyohito Itoh
  */
+@RunWith(DatabaseTestRunner.class)
+@TargetDb(exclude = TargetDb.Db.DB2)
 public class WmqXADbConnectionFactoryForXADataSourceTest {
     
     @Rule
