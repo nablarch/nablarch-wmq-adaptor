@@ -9,6 +9,12 @@
   <version>1.0.1</version>
   <description>WebSphere MQ用のメッセージング基盤機能の拡張実装</description>
 
+  <scm>
+    <connection>scm:git:git://github.com/nablarch/${project.artifactId}.git</connection>
+    <developerConnection>scm:git:git://github.com/nablarch/${project.artifactId}.git</developerConnection>
+    <url>https://github.com/nablarch/${project.artifactId}/tree/master</url>
+  </scm>
+
   <parent>
     <groupId>com.nablarch</groupId>
     <artifactId>nablarch-parent</artifactId>
