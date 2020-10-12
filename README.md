@@ -1,9 +1,5 @@
 # nablarch-wmq-adaptor
 
-| master | develop |
-|:-----------|:------------|
-|[![Build Status](https://travis-ci.org/nablarch/nablarch-wmq-adaptor.svg?branch=master)](https://travis-ci.org/nablarch/nablarch-wmq-adaptor)|[![Build Status](https://travis-ci.org/nablarch/nablarch-wmq-adaptor.svg?branch=develop)](https://travis-ci.org/nablarch/nablarch-wmq-adaptor)|
-
 ## 依存ライブラリ
 
 本モジュールのコンパイルまたはテストには、下記ライブラリを手動でローカルリポジトリへインストールする必要があります。
