@@ -129,7 +129,7 @@ public class BasicWmqMqmdFieldsOperator implements WmqMqmdFieldsOperator {
 
         // メッセージ存続時間
         // timeToLive: ミリ秒単位(Nablarch)
-        // expiry    : 1/10秒単位(WebSphere MQ)
+        // expiry    : 1/10秒単位(IBM MQ)
         Long timeToLive = getHeaderValue(headerMap, HeaderName.TIME_TO_LIVE, defaultTimeToLive);
         sendingMessage.setTimeToLive(timeToLive);
         int expiry = (int) (timeToLive / 100); // ミリ秒単位 -> 1/10秒単位

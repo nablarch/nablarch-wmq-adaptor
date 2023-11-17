@@ -7,7 +7,7 @@
   <groupId>com.nablarch.integration</groupId>
   <artifactId>nablarch-wmq-adaptor</artifactId>
   <version>5-NEXT-SNAPSHOT</version>
-  <description>WebSphere MQ用のメッセージング基盤機能の拡張実装</description>
+  <description>IBM MQ用のメッセージング基盤機能の拡張実装</description>
 
   <scm>
     <connection>scm:git:git://github.com/nablarch/${project.artifactId}.git</connection>
