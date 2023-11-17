@@ -39,33 +39,9 @@
     </dependency>
 
     <dependency>
-      <groupId>com.ibm</groupId>
-      <artifactId>com.ibm.mq</artifactId>
-      <version>7.5</version>
-    </dependency>
-    
-    <dependency>
-      <groupId>com.ibm</groupId>
-      <artifactId>com.ibm.mq.commonservices</artifactId>
-      <version>7.5</version>
-    </dependency>
-    
-    <dependency>
-      <groupId>com.ibm</groupId>
-      <artifactId>com.ibm.mq.headers</artifactId>
-      <version>7.5</version>
-    </dependency>
-    
-    <dependency>
-      <groupId>com.ibm</groupId>
-      <artifactId>com.ibm.mq.jmqi</artifactId>
-      <version>7.5</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.ibm</groupId>
-      <artifactId>com.ibm.mq.pcf</artifactId>
-      <version>7.5</version>
+      <groupId>com.ibm.mq</groupId>
+      <artifactId>com.ibm.mq.allclient</artifactId>
+      <version>9.3.0.10</version>
     </dependency>
 
     <dependency>
