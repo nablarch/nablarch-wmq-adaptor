@@ -883,7 +883,6 @@ public class WmqMessagingProvider implements MessagingProvider, Initializable {
     }
 
     /**
-     * IBM MQ8.0系以降でロギング機能が削除されたため、本プロパティは廃止しました。(値を設定しても意味がありません)
      * IBM MQによる{@link MQException}発生時の標準エラー出力を使用するか否かを設定する。
      * <p/>
      * デフォルトはfalse。
@@ -891,7 +890,7 @@ public class WmqMessagingProvider implements MessagingProvider, Initializable {
      * @param useProductSystemErrorOutput
      *     IBM MQによる{@link MQException}発生時の標準エラー出力を使用する場合はtrue
      */
-    @IgnoreProperty
+    @IgnoreProperty("IBM MQ8.0系以降でロギング機能が削除されたため、本プロパティは廃止しました。(値を設定しても意味がありません)")
     public void setUseProductSystemErrorOutput(boolean useProductSystemErrorOutput) {
         this.useProductSystemErrorOutput = useProductSystemErrorOutput;
     }
