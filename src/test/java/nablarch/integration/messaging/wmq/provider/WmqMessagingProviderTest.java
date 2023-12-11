@@ -42,40 +42,30 @@ public class WmqMessagingProviderTest {
 
         OutputStreamWriter tempMqLog = MQException.log;
 
-        try {
+        // デフォルト設定の場合
 
-            // デフォルト設定の場合
+        WmqMessagingProvider provider = new WmqMessagingProvider();
+        provider.initialize();
+        assertThat(MQEnvironment.properties.get(CMQC.TRANSPORT_PROPERTY).toString(),
+                is(CMQC.TRANSPORT_MQSERIES_BINDINGS));
+        assertThat(MQEnvironment.properties.get(CMQC.THREAD_AFFINITY_PROPERTY).toString(),
+                is(Boolean.TRUE.toString()));
 
-            WmqMessagingProvider provider = new WmqMessagingProvider();
-            provider.initialize();
-            assertThat(MQEnvironment.properties.get(CMQC.TRANSPORT_PROPERTY).toString(),
-                       is(CMQC.TRANSPORT_MQSERIES_BINDINGS));
-            assertThat(MQEnvironment.properties.get(CMQC.THREAD_AFFINITY_PROPERTY).toString(),
-                       is(Boolean.TRUE.toString()));
-            assertNull(MQException.log);
+        // 設定した場合
 
-            MQException.log = tempMqLog;
+        provider = new WmqMessagingProvider();
+        provider.setUseXa(false);
+        provider.setUseProductSystemErrorOutput(true);
 
-            // 設定した場合
-
-            provider = new WmqMessagingProvider();
-            provider.setUseXa(false);
-            provider.setUseProductSystemErrorOutput(true);
-
-            provider.initialize();
-            assertThat(MQEnvironment.properties.get(CMQC.TRANSPORT_PROPERTY).toString(),
-                       is(CMQC.TRANSPORT_MQSERIES_BINDINGS));
-            assertThat(MQEnvironment.properties.get(CMQC.THREAD_AFFINITY_PROPERTY).toString(),
-                       is(Boolean.FALSE.toString()));
-            assertNotNull(MQException.log);
-
-        } finally {
-            MQException.log = tempMqLog;
-        }
+        provider.initialize();
+        assertThat(MQEnvironment.properties.get(CMQC.TRANSPORT_PROPERTY).toString(),
+                is(CMQC.TRANSPORT_MQSERIES_BINDINGS));
+        assertThat(MQEnvironment.properties.get(CMQC.THREAD_AFFINITY_PROPERTY).toString(),
+                is(Boolean.FALSE.toString()));
 
         // 退避キュー名の設定
         final Set<String> queueNames = new HashSet<String>();
-        WmqMessagingProvider provider = new WmqMessagingProvider() {
+        provider = new WmqMessagingProvider() {
             @Override
             protected MQQueueManager createMQQueueManager() {
                 return null;

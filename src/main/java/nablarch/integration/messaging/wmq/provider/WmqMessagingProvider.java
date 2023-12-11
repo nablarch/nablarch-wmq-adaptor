@@ -11,6 +11,7 @@ import com.ibm.mq.constants.CMQC;
 import nablarch.core.log.Logger;
 import nablarch.core.log.LoggerManager;
 import nablarch.core.log.app.FailureLogUtil;
+import nablarch.core.repository.IgnoreProperty;
 import nablarch.core.repository.initialization.Initializable;
 import nablarch.core.util.BinaryUtil;
 import nablarch.core.util.StringUtil;
@@ -37,7 +38,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * WebSphere MQを使用した{@link MessagingProvider}の実装クラス。
+ * IBM MQを使用した{@link MessagingProvider}の実装クラス。
  * @author Kiyohito Itoh
  */
 public class WmqMessagingProvider implements MessagingProvider, Initializable {
@@ -94,20 +95,20 @@ public class WmqMessagingProvider implements MessagingProvider, Initializable {
     private boolean useXa = true;
 
     /**
-     * WebSphere MQによる{@link MQException}発生時の標準エラー出力を使用するか否か。
-     * WebSphere MQによる{@link MQException}発生時の標準エラー出力を使用する場合はtrue。
+     * IBM MQによる{@link MQException}発生時の標準エラー出力を使用するか否か。
+     * IBM MQによる{@link MQException}発生時の標準エラー出力を使用する場合はtrue。
      */
     private boolean useProductSystemErrorOutput = false;
 
     /**
-     * WebSphere MQの初期化処理を行う。
+     * IBM MQの初期化処理を行う。
      * <p/>
      * 下記の処理を行う。
      * <ul>
      * <li>{@link #checkPoisonSetting()}メソッドを呼び出し退避キューの設定不備がないことをチェックする。</li>
      * <li>接続モード({@link CMQC#TRANSPORT_PROPERTY})をバインディングモードに設定する。</li>
      * <li>スレッド類縁性({@link CMQC#THREAD_AFFINITY_PROPERTY})に{@link #useXa}プロパティの値を設定する。</li>
-     * <li>{@link #useProductSystemErrorOutput}プロパティがfalseの場合はWebSphere MQによる標準エラー出力を無効化する。</li>
+     * <li>{@link #useProductSystemErrorOutput}プロパティがfalseの場合はIBM MQによる標準エラー出力を無効化する。</li>
      * <li>接続モード({@link CMQC#TRANSPORT_PROPERTY})をバインディングモードに設定する。</li>
      * <li>{@link #poisonQueueNamePattern}が指定された場合は{@link #receivedQueueName}を使用してフォーマットした退避キュー名を設定する。</li>
      * </ul>
@@ -124,7 +125,7 @@ public class WmqMessagingProvider implements MessagingProvider, Initializable {
         // スレッド類縁性
         MQEnvironment.properties.put(CMQC.THREAD_AFFINITY_PROPERTY, useXa);
 
-        // WebSphere MQによるMQException発生時の標準エラー出力
+        // IBM MQによるMQException発生時の標準エラー出力
         if (!useProductSystemErrorOutput) {
             MQException.log = null;
         }
@@ -209,7 +210,7 @@ public class WmqMessagingProvider implements MessagingProvider, Initializable {
                 getMQQueue(mqQueueManager, poisonQueueName, getPoisonQueueOpenOptions()));
         } catch (MQException e) {
             throw messagingExceptionFactory.createMessagingException(
-                String.format("could not initialize WebSphere MQ MQQueueManager/MQQueue. "
+                String.format("could not initialize IBM MQ MQQueueManager/MQQueue. "
                             + "queueManagerName = [%s]", queueManagerName), e);
         }
     }
@@ -570,7 +571,7 @@ public class WmqMessagingProvider implements MessagingProvider, Initializable {
             mqQueueManager.disconnect();
         } catch (MQException e) {
             if (LOGGER.isTraceEnabled()) {
-                LOGGER.logTrace("could not close WebSphere MQ MQQueueManager.", e);
+                LOGGER.logTrace("could not close IBM MQ MQQueueManager.", e);
             }
         }
     }
@@ -607,7 +608,7 @@ public class WmqMessagingProvider implements MessagingProvider, Initializable {
             mqQueue.close();
         } catch (MQException e) {
             if (LOGGER.isTraceEnabled()) {
-                LOGGER.logTrace("could not close WebSphere MQ MQQueue.", e);
+                LOGGER.logTrace("could not close IBM MQ MQQueue.", e);
             }
         }
     }
@@ -882,13 +883,14 @@ public class WmqMessagingProvider implements MessagingProvider, Initializable {
     }
 
     /**
-     * WebSphere MQによる{@link MQException}発生時の標準エラー出力を使用するか否かを設定する。
+     * IBM MQによる{@link MQException}発生時の標準エラー出力を使用するか否かを設定する。
      * <p/>
      * デフォルトはfalse。
      * 
      * @param useProductSystemErrorOutput
-     *     WebSphere MQによる{@link MQException}発生時の標準エラー出力を使用する場合はtrue
+     *     IBM MQによる{@link MQException}発生時の標準エラー出力を使用する場合はtrue
      */
+    @IgnoreProperty("IBM MQ8.0系以降でロギング機能が削除されたため、本プロパティは廃止しました。(値を設定しても意味がありません)")
     public void setUseProductSystemErrorOutput(boolean useProductSystemErrorOutput) {
         this.useProductSystemErrorOutput = useProductSystemErrorOutput;
     }

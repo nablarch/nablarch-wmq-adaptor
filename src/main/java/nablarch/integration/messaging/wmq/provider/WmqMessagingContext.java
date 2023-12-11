@@ -17,7 +17,7 @@ import com.ibm.mq.MQQueue;
 import com.ibm.mq.MQQueueManager;
 
 /**
- * WebSphere MQを使用した{@link MessagingContext}の実装クラス。
+ * IBM MQを使用した{@link MessagingContext}の実装クラス。
  * @author Kiyohito Itoh
  */
 public class WmqMessagingContext extends MessagingContext {
