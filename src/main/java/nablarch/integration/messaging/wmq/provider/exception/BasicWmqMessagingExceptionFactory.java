@@ -11,7 +11,7 @@ import com.ibm.mq.MQException;
 import com.ibm.mq.constants.CMQC;
 
 /**
- * WebSphere MQを使用したメッセージング機能向けの{@link MessagingExceptionFactory}の基本実装クラス。
+ * IBM MQを使用したメッセージング機能向けの{@link MessagingExceptionFactory}の基本実装クラス。
  * @author Kiyohito Itoh
  */
 public class BasicWmqMessagingExceptionFactory implements MessagingExceptionFactory {
