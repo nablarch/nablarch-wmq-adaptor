@@ -884,8 +884,8 @@ public class WmqMessagingProvider implements MessagingProvider, Initializable {
 
     /**
      * IBM MQによる{@link MQException}発生時の標準エラー出力を使用するか否かを設定する。
-     * <p/>
-     * デフォルトはfalse。
+     *
+     * <p><b>IBM MQ8.0系以降でロギング機能が削除されたため、本プロパティは廃止しました。(値を設定しても意味がありません)</b>
      * 
      * @param useProductSystemErrorOutput
      *     IBM MQによる{@link MQException}発生時の標準エラー出力を使用する場合はtrue
