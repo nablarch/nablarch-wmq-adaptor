@@ -95,12 +95,6 @@ public class WmqMessagingProvider implements MessagingProvider, Initializable {
     private boolean useXa = true;
 
     /**
-     * IBM MQによる{@link MQException}発生時の標準エラー出力を使用するか否か。
-     * IBM MQによる{@link MQException}発生時の標準エラー出力を使用する場合はtrue。
-     */
-    private boolean useProductSystemErrorOutput = false;
-
-    /**
      * IBM MQの初期化処理を行う。
      * <p/>
      * 下記の処理を行う。
@@ -108,7 +102,6 @@ public class WmqMessagingProvider implements MessagingProvider, Initializable {
      * <li>{@link #checkPoisonSetting()}メソッドを呼び出し退避キューの設定不備がないことをチェックする。</li>
      * <li>接続モード({@link CMQC#TRANSPORT_PROPERTY})をバインディングモードに設定する。</li>
      * <li>スレッド類縁性({@link CMQC#THREAD_AFFINITY_PROPERTY})に{@link #useXa}プロパティの値を設定する。</li>
-     * <li>{@link #useProductSystemErrorOutput}プロパティがfalseの場合はIBM MQによる標準エラー出力を無効化する。</li>
      * <li>接続モード({@link CMQC#TRANSPORT_PROPERTY})をバインディングモードに設定する。</li>
      * <li>{@link #poisonQueueNamePattern}が指定された場合は{@link #receivedQueueName}を使用してフォーマットした退避キュー名を設定する。</li>
      * </ul>
@@ -124,11 +117,6 @@ public class WmqMessagingProvider implements MessagingProvider, Initializable {
 
         // スレッド類縁性
         MQEnvironment.properties.put(CMQC.THREAD_AFFINITY_PROPERTY, useXa);
-
-        // IBM MQによるMQException発生時の標準エラー出力
-        if (!useProductSystemErrorOutput) {
-            MQException.log = null;
-        }
 
         // 退避キュー名
         if (StringUtil.hasValue(receivedQueueName) && StringUtil.hasValue(poisonQueueNamePattern)) {
@@ -884,14 +872,13 @@ public class WmqMessagingProvider implements MessagingProvider, Initializable {
 
     /**
      * IBM MQによる{@link MQException}発生時の標準エラー出力を使用するか否かを設定する。
-     * <p/>
-     * デフォルトはfalse。
+     *
+     * <p><b>IBM MQ8.0系以降でロギング機能が削除されたため、本プロパティは廃止しました。(値を設定しても意味がありません)</b>
      * 
      * @param useProductSystemErrorOutput
      *     IBM MQによる{@link MQException}発生時の標準エラー出力を使用する場合はtrue
      */
     @IgnoreProperty("IBM MQ8.0系以降でロギング機能が削除されたため、本プロパティは廃止しました。(値を設定しても意味がありません)")
     public void setUseProductSystemErrorOutput(boolean useProductSystemErrorOutput) {
-        this.useProductSystemErrorOutput = useProductSystemErrorOutput;
     }
 }
