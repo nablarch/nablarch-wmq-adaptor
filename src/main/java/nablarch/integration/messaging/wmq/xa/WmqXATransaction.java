@@ -8,7 +8,7 @@ import nablarch.core.transaction.Transaction;
 import nablarch.integration.messaging.wmq.provider.WmqMessagingContext;
 
 /**
- * WebSphere MQを使用した分散トランザクションの制御を行うクラス。
+ * IBM MQを使用した分散トランザクションの制御を行うクラス。
  * @author Kiyohito Itoh
  */
 public class WmqXATransaction implements Transaction {

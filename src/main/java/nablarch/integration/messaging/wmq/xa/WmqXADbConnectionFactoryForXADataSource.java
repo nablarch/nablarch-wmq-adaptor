@@ -12,7 +12,7 @@ import nablarch.core.db.connection.TransactionManagerConnection;
 import nablarch.integration.messaging.wmq.provider.WmqMessagingContext;
 
 /**
- * WebSphere MQを使用した分散トランザクションに対応したデータベース接続を生成するクラス。
+ * IBM MQを使用した分散トランザクションに対応したデータベース接続を生成するクラス。
  * @author Kiyohito Itoh
  */
 public class WmqXADbConnectionFactoryForXADataSource extends ConnectionFactorySupport {

@@ -29,7 +29,7 @@ import org.junit.Rule;
 import org.junit.Test;
 
 /**
- * WebSphere MQの使用方法のテスト。
+ * IBM MQの使用方法のテスト。
  * @author Kiyohito Itoh
  */
 public class UsageOfWebSphereMQTest {

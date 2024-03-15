@@ -5,10 +5,10 @@ import java.sql.Connection;
 import nablarch.core.db.connection.BasicDbConnection;
 
 /**
- * WebSphere MQを使用した分散トランザクションに対応した
+ * IBM MQを使用した分散トランザクションに対応した
  * {@link nablarch.core.db.connection.TransactionManagerConnection}の実装クラス。
  * <p/>
- * WebSphere MQの実装に合わせて下記メソッドをオーバーライドする。
+ * IBM MQの実装に合わせて下記メソッドをオーバーライドする。
  * <ul>
  * <li>{@link #commit()}</li>
  * <li>{@link #rollback()}</li>
